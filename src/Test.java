@@ -6,59 +6,41 @@ public class Test {
         Scanner scanner = new Scanner(System.in);
         String expr = scanner.next();
 
+//        Arithmetic computer = new Arithmetic(expr);
+//        computer.calculateFinalResult();
+//        Token finalResult = computer.getResult();
+//        System.out.println(finalResult.toString());
+//
         TokenList tokenList = TokenList.getInstance(expr);
 
         boolean brackets = tokenList.getBracketsExist();
         System.out.println(brackets);
 
         TokenListSender tls = new TokenListSender(expr);
-//        ArrayList<Integer> indexList = tls.createBracketsIndexList();
-//
-//        for (Integer num:indexList
-//             ) {
-//            System.out.println(num);
-//        }
-//
-//        ArrayList<Token> tokenListTest = tls.createBracketsTokenList(indexList);
-//
-//        for (Token token:tokenListTest
-//        ) {
-//            System.out.println(token);
-//        }
+        tls.createSubTokenListToCalculate(); // create subtokenlist
 
-        tls.createSubTokenListToCalculate();
 
-        System.out.println("\n\nsub token list to calculate:");
-        for (Token token:tls.getSubTokenListToCalculate()
-             ) {
-            System.out.println(token);
+
+
+        while(tokenList.getTokenArrayList().size()>1){
+
+            System.out.println("\n\nsub token list to calculate:");
+            for (Token token:tls.getSubTokenListToCalculate()
+            ) {
+                System.out.println(token);
+            }
+
+            Calculator calculator = new Calculator(tls.getSubTokenListToCalculate()); //give subtoken list to calculator
+
+            calculator.calculateFinalResult();
+            Token tempResult = calculator.getResultToken();
+
+            tls.updateTokenList(tempResult); //should update token list with result and refresh subtoken list
+
+
+
+
         }
-
-        Token tempResult = new Token("num","5");
-
-        tls.updateTokenList(tempResult);
-        //print
-        tokenList.printFinalResult();
-
-        tokenList.printTokenArrayList();
-
-        System.out.println("\n\nsub token list to calculate:");
-        for (Token token:tls.getSubTokenListToCalculate()
-        ) {
-            System.out.println(token);
-        }
-
-
-
-
-
-
-
-
-
-        //tokenList.refreshTokenArrayListAfterBrackets(resultTest);
-
-
 
     }
 }

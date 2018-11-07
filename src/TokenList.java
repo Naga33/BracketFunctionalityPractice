@@ -253,6 +253,9 @@ public class TokenList {
     public ArrayList<Token> getTokenArrayList(){
         return tokenArrayList;
     }
+    public String getExpression(){
+        return expression;
+    }
 //
 //    public ArrayList<Token> getSubTokenListBrackets() { return subTokenListBrackets; }
 //
