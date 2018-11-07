@@ -33,12 +33,12 @@ public class RegexList {
     }
 
     private void addRegexToRegexList(){
+        regexArrayList.add(openParen);
         regexArrayList.add(cos);
         regexArrayList.add(sin);
         regexArrayList.add(log);
         regexArrayList.add(sqrt);
         regexArrayList.add(num);
-        regexArrayList.add(openParen);
         regexArrayList.add(assign);
         regexArrayList.add(id);
         regexArrayList.add(sum);

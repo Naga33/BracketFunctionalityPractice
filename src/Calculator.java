@@ -9,8 +9,10 @@ public class Calculator {
     private ArrayList<Token> subExpression;
     private Token resultToken;
 
-    public Calculator(ArrayList<Token> subExpression){
-        this.subExpression = subExpression;
+    public Calculator(){}
+
+    public void setSubExpression(ArrayList<Token> subTokenList){
+        this.subExpression = subTokenList;
     }
 
     public Token getResultToken(){

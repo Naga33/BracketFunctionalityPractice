@@ -13,14 +13,16 @@ public class Arithmetic {
     public Arithmetic(String expr){
         tokenList = TokenList.getInstance(expr);
         listSender = new TokenListSender(expr); //creates sub token list immediately
-        subExpression = listSender.getSubTokenListToCalculate(); //gets the sub token list
-        calculator = new Calculator(subExpression); //calculator does not do anything unless method is called
+        listSender.createSubTokenListToCalculate();
+        calculator = new Calculator(); //calculator does not do anything unless method is called
     }
 
     public void calculateFinalResult(){
+
         while(tokenList.getTokenArrayList().size()>1){
+            calculator.setSubExpression(listSender.getSubTokenListToCalculate());
             calculator.calculateFinalResult();
-            result = calculator.getResultToken(); //calculates final answer of sub expr
+            result = calculator.getResultToken();
             listSender.updateTokenList(result);
         }
     }
